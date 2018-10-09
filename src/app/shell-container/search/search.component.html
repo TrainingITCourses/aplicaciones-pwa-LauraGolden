@@ -1,4 +1,4 @@
-<div id="content">    
+<div id="content" *ngIf="cargado">    
     <div id="page">
         <div id="header">
             <h1 style = "color:#d18017" align="center">{{titulo}}</h1>
@@ -16,4 +16,3 @@
         </app-launches-list>
     </div>   
 </div>
-<!-- *ngIf="!loaded" -->

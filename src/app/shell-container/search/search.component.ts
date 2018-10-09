@@ -19,10 +19,11 @@ export class SearchComponent implements OnInit {
   public valores$: Observable<any>;
   public lanzamientos$: Observable<any>;
   private criterioActual: ModoBusqueda;
-  public loaded = false;
 
   constructor(private store: Store<GlobalState>) { }
   @Input() public titulo: string;
+  @Input() public cargado: boolean;
+  @Input() public version: string;
 
   ngOnInit() {
     this.cargaObservables();
@@ -38,7 +39,9 @@ export class SearchComponent implements OnInit {
       );
 
       this.lanzamientos$ = this.store.select('lanzamientos').pipe(
-        tap(() => (this.loaded = true)),
+        tap(() => (
+          this.cargado = true
+          )),
         map(Lan => {
           return Lan.lanzamientos;
         })
