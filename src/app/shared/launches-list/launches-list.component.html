@@ -1,0 +1,8 @@
+<p *ngIf="lanzamientos?.length == 0">No se ha encontrado ningún lanzamiento</p>
+<div *ngIf="lanzamientos?.length > 0">    
+    <ul>
+    <li *ngFor="let lanzamiento of lanzamientos;">
+        {{ lanzamiento.name }}
+    </li>
+    </ul>
+</div>
