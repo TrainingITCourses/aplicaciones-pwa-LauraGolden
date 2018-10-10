@@ -9,10 +9,10 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.9d0c01fc0ea61838dbbc.js",
+        "/main.ed317c5b156626c55499.js",
         "/polyfills.f6ae3e8b63939c618130.js",
         "/runtime.ec2944dd8b20ec099bf3.js",
-        "/styles.06337a32e68a650851c5.css"
+        "/styles.fc6cc82a1410b69f9ab7.css"
       ],
       "patterns": []
     },
@@ -28,11 +28,13 @@
         "/assets/icons/icon-384x384.png",
         "/assets/icons/icon-512x512.png",
         "/assets/icons/icon-72x72.png",
-        "/assets/icons/icon-96x96.png"
+        "/assets/icons/icon-96x96.png",
+        "/assets/images/lan_01.jpg",
+        "/assets/images/lan_02.jpg"
       ],
       "patterns": [
-        "https:\\/\\/fonts\\.googleapis\\.com\\/icon\\?family=Material\\+Icons",
-        "https:\\/\\/fonts\\.googleapis\\.com\\/css\\?family=Roboto:300,400,500"
+        "https:\\/\\/stackpath\\.bootstrapcdn\\.com\\/bootstrap\\/4\\.1\\.3\\/css\\/bootstrap\\.min\\.css",
+        "https:\\/\\/stackpath\\.bootstrapcdn\\.com\\/bootstrap\\/4\\.1\\.3\\/js\\/bootstrap\\.min\\.js"
       ]
     }
   ],
@@ -52,7 +54,9 @@
     },
     {
       "name": "cache-first",
-      "patterns": [],
+      "patterns": [
+        "http:\\/\\/127\\.0\\.0\\.1:8080\\/assets\\/launchlibrary\\.json"
+      ],
       "strategy": "performance",
       "maxSize": 2000,
       "maxAge": 86400000,
@@ -60,13 +64,11 @@
     },
     {
       "name": "api-first",
-      "patterns": [
-        "https:\\/\\/launchlibrary\\.net\\/1\\.4\\/launch\\/1950-01-01\\?limit=2000"
-      ],
+      "patterns": [],
       "strategy": "freshness",
-      "maxSize": 2000,
+      "maxSize": 10,
       "maxAge": 86400000,
-      "timeoutMs": 3000,
+      "timeoutMs": 5000,
       "version": 1
     }
   ],
@@ -79,12 +81,14 @@
     "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
     "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
-    "/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "/index.html": "ad9552aab9514c50a7c6d4ea39da45ded1d8e352",
-    "/main.9d0c01fc0ea61838dbbc.js": "170b0ad36aeacb1d6f3dc99ccdf554ad09375594",
+    "/assets/images/lan_01.jpg": "f643950563d095ff0675670568927d8e5e4ab6e7",
+    "/assets/images/lan_02.jpg": "bdf64782a10080b4d9dcc915a58e40441797759a",
+    "/favicon.ico": "a923915cece9dcdd436ab93fdec665b4efe976d2",
+    "/index.html": "b0484ff1e2a42d7ea9dd7080e64e7c0cebf8f456",
+    "/main.ed317c5b156626c55499.js": "91855fd9641e3e454ada70803e849306abb285f0",
     "/polyfills.f6ae3e8b63939c618130.js": "ef2035f0504b4f77eac510c33595c81a5d09e33f",
     "/runtime.ec2944dd8b20ec099bf3.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
-    "/styles.06337a32e68a650851c5.css": "a01c163038f241bb86ac06b43a951b7551a0a164"
+    "/styles.fc6cc82a1410b69f9ab7.css": "9c2b940c3493e5dbbb08e755e4909afba9660b67"
   },
   "navigationUrls": [
     {

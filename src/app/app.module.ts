@@ -13,10 +13,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { ApiService } from './services/api.service';
 import { EffectsModule } from '@ngrx/effects';
-import { LanzamientosEffects } from './effects/lanzamientos.effects';
-import { ValoresEffects } from './effects/valores.effects';
+import { LanzamientosEffects } from './reducers/lanzamientos/lanzamientos.effects';
+import { ValoresEffects } from './reducers/valores/valores.effects';
+import { EstadosEffects } from './reducers/estados/estados.effects';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ShellContainerComponent } from './shell-container/shell-container/shell-container.component';
+
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,7 @@ import { ShellContainerComponent } from './shell-container/shell-container/shell
     HttpClientModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([LanzamientosEffects, ValoresEffects]),
+    EffectsModule.forRoot([LanzamientosEffects, ValoresEffects, EstadosEffects]),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ApiService],

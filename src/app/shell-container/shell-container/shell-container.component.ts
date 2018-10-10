@@ -4,9 +4,9 @@ import { map, tap } from 'rxjs/operators';
 import { UpdateAvailableEvent } from '@angular/service-worker/src/low_level';
 import { SwUpdate } from '@angular/service-worker';
 import { GlobalState } from '../..';
-import { CargarLanzamientos } from 'src/app/accions/lanzamientos.actions';
-import { CargarValores } from 'src/app/accions/valores.actions';
-// import { MdDialogsHelperService } from 'src/app/core/md-dialogs-helper/md-dialogs-helper.service';
+import { CargarLanzamientos } from 'src/app/reducers/lanzamientos/lanzamientos.actions';
+import { CargarValores } from 'src/app/reducers/valores/valores.actions';
+import { CargarEstados } from '../../reducers/estados/estados.actions';
 
 
 @Component({
@@ -16,7 +16,7 @@ import { CargarValores } from 'src/app/accions/valores.actions';
 })
 export class ShellContainerComponent implements OnInit {
   @Input() public titulo: string;
-  @Input() public version: string;
+  public version: string;
   public _cargado = false;
 
   // public cargado = false;
@@ -29,48 +29,39 @@ export class ShellContainerComponent implements OnInit {
 
   ngOnInit() {
     console.log('Shell_ngOnInit');
+    this.store.dispatch(new CargarEstados());
 
     this.observeVersions();
     this.observeLoading();
-    this._cargado = true;
+    // this._cargado = true;
   }
 
 
   private observeVersions() {
+    this.version = '1';
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe((event: UpdateAvailableEvent) => {
-        // const msg =
-        // 'current: ' +
-        // event.current.hash +
-        // '. Load new: ' +
-        // event.available.hash +
-        // ' ?';
-        const msg = 'Existe una nueva versión: ' + this.version + ', ¿desea instalarla?';
+        const msg = 'Existe una nueva versión: ' + this.version + '\r\n, ¿desea instalarla?';
         if (confirm(msg)) { window.location.reload(); }
       });
     }
   }
 
-        // this.dialogs
-        //   .confirm('There is a new version', 'Click ok to install')
-        //   .subscribe(res => {
-        //     if (res) window.location.reload();
-        //   });
-
-
   private observeLoading() {
 
-    this.store.select('lanzamientos').subscribe(st => {
-      if (st.cargando) {
-        this._cargado = true;
-      } else {
-        // if (this.loadingDialog) {
-        //   setTimeout(() => {
-        //     this.dialogs.closeLoading(this.loadingDialog);
-        //     this.loadingDialog = null;
-        //   }, 100);
-        // }
-      }
-    });
+    // this.store.select('estados').subscribe(st => {
+    //   // if (st.cargando) {
+    //   //   this._cargado = true;
+    //   //   console.log('cargados estados');
+    //   // } else {
+    //   //   console.log('No cargados estados');
+    //   //   // if (this.loadingDialog) {
+    //   //   //   setTimeout(() => {
+    //   //   //     this.dialogs.closeLoading(this.loadingDialog);
+    //   //   //     this.loadingDialog = null;
+    //   //   //   }, 100);
+    //   //   // }
+    //   // }
+    // });
   }
 }

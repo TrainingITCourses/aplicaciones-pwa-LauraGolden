@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { GlobalState } from '../..';
 import { ModoBusqueda } from '../../shared/criterion/criterion-modo';
-import { CargarValores } from '../../accions/valores.actions';
-import { CargarLanzamientos } from '../../accions/lanzamientos.actions';
+import { CargarValores } from '../../reducers/valores/valores.actions';
+import { CargarLanzamientos } from '../../reducers/lanzamientos/lanzamientos.actions';
 
 @Component({
   selector: 'app-search',
@@ -39,9 +39,6 @@ export class SearchComponent implements OnInit {
       );
 
       this.lanzamientos$ = this.store.select('lanzamientos').pipe(
-        tap(() => (
-          this.cargado = true
-          )),
         map(Lan => {
           return Lan.lanzamientos;
         })

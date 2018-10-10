@@ -1,5 +1,5 @@
-import { ValoresActions, ValoresActionTypes } from '../accions/valores.actions';
-import { Valores } from '../interfaces/valores';
+import { ValoresActions, ValoresActionTypes } from './valores.actions';
+import { Valores } from '../../interfaces/valores';
 
 
 export interface ValoresState {

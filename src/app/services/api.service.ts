@@ -22,6 +22,16 @@ export class ApiService {
     }
   }
 
+  public getAllCriteria(criterio: ModoBusqueda): Observable<any>  {
+    switch (criterio) {
+      case 1 : // 'Estado':
+        return this.getStatusTypes();
+      case 2: // 'Agencia':
+        return this.getAgencies();
+      case 3: // 'Tipo':
+        return this.getMissionsTypes();
+    }
+  }
   private getStatusTypes() {
     return this.httpC.get('../../assets/launchstatus.json').pipe(
       map((res: any) => {
@@ -46,7 +56,14 @@ export class ApiService {
     );
   }
 
-  public getFilterLaunches(criterio?: ModoBusqueda, valor?): Observable<any> {
+
+  public getStatusTypes$ = (): Observable<any[]> =>
+    this.httpC
+      .get('../../assets/launchstatus.json')
+      .pipe(map((res: any) => res.types))
+
+
+  public getFilterLaunches(criterio: ModoBusqueda, valor): Observable<any> {
     if (valor !== null) {
       return this.httpC.get('../../assets/launchlibrary.json').pipe(
         map((res: any) =>

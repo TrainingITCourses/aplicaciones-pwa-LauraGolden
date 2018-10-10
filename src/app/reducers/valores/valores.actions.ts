@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
-import { ModoBusqueda } from '../shared/criterion/criterion-modo';
-import { Valores } from '../interfaces/valores';
+import { ModoBusqueda } from '../../shared/criterion/criterion-modo';
+import { Valores } from '../../interfaces/valores';
 
 
 export enum ValoresActionTypes {

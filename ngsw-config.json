@@ -19,11 +19,12 @@
     "updateMode": "prefetch",
     "resources": {
       "files": [
-        "/assets/icons/**"
+        "/assets/icons/**",
+        "/assets/images/**"
       ],
       "urls":[
-        "https://fonts.googleapis.com/icon?family=Material+Icons",
-        "https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css",
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
       ]
     }
   }
@@ -46,7 +47,7 @@
     {
       "name": "cache-first",
       "urls":[
-        
+        "http://127.0.0.1:8080/assets/launchlibrary.json"
       ],
       "cacheConfig":{
         "strategy":"performance",
@@ -56,14 +57,13 @@
     },
     {
       "name": "api-first",
-      "urls":[
-        "https://launchlibrary.net/1.4/launch/1950-01-01?limit=2000"
+      "urls":[        
       ],
       "cacheConfig":{
         "strategy" : "freshness",
-        "maxSize": 2000,
+        "maxSize": 10,
         "maxAge" : "1d",
-        "timeout" : "3s"
+        "timeout" : "5s"
       }
     }
   ]

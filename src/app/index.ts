@@ -6,8 +6,8 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../environments/environment';
-import * as fromLanzamientos from './reducers/lanzamientos.reducer';
-import * as fromValores from './reducers/valores.reducer';
+import * as fromLanzamientos from './reducers/lanzamientos/lanzamientos.reducer';
+import * as fromValores from './reducers/valores/valores.reducer';
 
 export interface GlobalState {
   lanzamientos: fromLanzamientos.LanzamientoState;

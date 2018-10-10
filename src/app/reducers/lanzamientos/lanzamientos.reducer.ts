@@ -1,7 +1,6 @@
-  import { Action } from '@ngrx/store';
-import { LanzamientosActions, LanzamientosActionTypes } from '../accions/lanzamientos.actions';
-import { Lanzamiento } from '../interfaces/lanzamiento';
-
+import { Action } from '@ngrx/store';
+import { Lanzamiento } from '../../interfaces/lanzamiento';
+import { LanzamientosActions, LanzamientosActionTypes } from './lanzamientos.actions';
 
 export interface LanzamientoState {
   lanzamientos: Lanzamiento[];
