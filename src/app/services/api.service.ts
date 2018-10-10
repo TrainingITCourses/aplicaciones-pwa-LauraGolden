@@ -46,7 +46,7 @@ export class ApiService {
     );
   }
 
-  public getFilterLaunches(criterio: ModoBusqueda, valor): Observable<any> {
+  public getFilterLaunches(criterio?: ModoBusqueda, valor?): Observable<any> {
     if (valor !== null) {
       return this.httpC.get('../../assets/launchlibrary.json').pipe(
         map((res: any) =>

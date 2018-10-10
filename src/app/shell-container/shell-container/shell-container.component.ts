@@ -4,6 +4,8 @@ import { map, tap } from 'rxjs/operators';
 import { UpdateAvailableEvent } from '@angular/service-worker/src/low_level';
 import { SwUpdate } from '@angular/service-worker';
 import { GlobalState } from '../..';
+import { CargarLanzamientos } from 'src/app/accions/lanzamientos.actions';
+import { CargarValores } from 'src/app/accions/valores.actions';
 // import { MdDialogsHelperService } from 'src/app/core/md-dialogs-helper/md-dialogs-helper.service';
 
 
@@ -15,7 +17,7 @@ import { GlobalState } from '../..';
 export class ShellContainerComponent implements OnInit {
   @Input() public titulo: string;
   @Input() public version: string;
-  @Input() public _cargado: boolean;
+  public _cargado = false;
 
   // public cargado = false;
 
@@ -27,8 +29,10 @@ export class ShellContainerComponent implements OnInit {
 
   ngOnInit() {
     console.log('Shell_ngOnInit');
+
     this.observeVersions();
-     this.observeLoading();
+    this.observeLoading();
+    this._cargado = true;
   }
 
 
@@ -42,7 +46,7 @@ export class ShellContainerComponent implements OnInit {
         // event.available.hash +
         // ' ?';
         const msg = 'Existe una nueva versión: ' + this.version + ', ¿desea instalarla?';
-        if (confirm(msg)) window.location.reload();
+        if (confirm(msg)) { window.location.reload(); }
       });
     }
   }
@@ -55,6 +59,7 @@ export class ShellContainerComponent implements OnInit {
 
 
   private observeLoading() {
+
     this.store.select('lanzamientos').subscribe(st => {
       if (st.cargando) {
         this._cargado = true;
