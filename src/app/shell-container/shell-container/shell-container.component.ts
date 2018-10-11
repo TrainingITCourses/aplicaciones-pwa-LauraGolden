@@ -25,15 +25,38 @@ export class ShellContainerComponent implements OnInit {
     private store: Store<GlobalState>,
     // private dialogs: MdDialogsHelperService,
     private swUpdate: SwUpdate
-  ) { }
+  ) {
+
+    this.store.select('estados').subscribe(st => {
+      if (st) {
+        if (st.cargado) {
+          console.log('Cargado');
+          this._cargado = true;
+        } else {
+          console.log('No Cargado');
+        }
+      }
+
+      // if (st.cargando) {
+      //   this._cargado = true;
+      //   console.log('cargados estados');
+      // } else {
+      //   console.log('No cargados estados');
+      //   // if (this.loadingDialog) {
+      //   //   setTimeout(() => {
+      //   //     this.dialogs.closeLoading(this.loadingDialog);
+      //   //     this.loadingDialog = null;
+      //   //   }, 100);
+      //   // }
+      // }
+    });
+
+  }
 
   ngOnInit() {
     console.log('Shell_ngOnInit');
-    this.store.dispatch(new CargarEstados());
-
     this.observeVersions();
     this.observeLoading();
-    // this._cargado = true;
   }
 
 
@@ -41,15 +64,22 @@ export class ShellContainerComponent implements OnInit {
     this.version = '1';
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe((event: UpdateAvailableEvent) => {
-        const msg = 'Existe una nueva versión: ' + this.version + '\r\n, ¿desea instalarla?';
+        const msg = 'Existe una nueva versión, ¿desea instalarla?';
         if (confirm(msg)) { window.location.reload(); }
       });
     }
   }
 
   private observeLoading() {
+    this.store.dispatch(new CargarEstados());
 
     // this.store.select('estados').subscribe(st => {
+    //   if (st.cargado) {
+    //     console.log('Cargado');
+    //     this._cargado = true;
+    //   } else {
+    //     console.log('No Cargado');
+    //   }
     //   // if (st.cargando) {
     //   //   this._cargado = true;
     //   //   console.log('cargados estados');
