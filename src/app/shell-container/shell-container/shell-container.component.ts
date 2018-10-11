@@ -61,11 +61,13 @@ export class ShellContainerComponent implements OnInit {
 
 
   private observeVersions() {
-    this.version = '1';
+    // this.version = '3';
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe((event: UpdateAvailableEvent) => {
         const msg = 'Existe una nueva versión, ¿desea instalarla?';
-        if (confirm(msg)) { window.location.reload(); }
+        if (confirm(msg)) {
+          window.location.reload();
+        }
       });
     }
   }
