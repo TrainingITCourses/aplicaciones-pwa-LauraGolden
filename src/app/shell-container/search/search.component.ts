@@ -7,6 +7,7 @@ import { GlobalState } from '../..';
 import { ModoBusqueda } from '../../shared/criterion/criterion-modo';
 import { CargarValores } from '../../reducers/valores/valores.actions';
 import { CargarLanzamientos } from '../../reducers/lanzamientos/lanzamientos.actions';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-search',
@@ -20,9 +21,8 @@ export class SearchComponent implements OnInit {
   public lanzamientos$: Observable<any>;
   private criterioActual: ModoBusqueda;
 
-  constructor(private store: Store<GlobalState>) { }
+  constructor(private store: Store<GlobalState>, private swUpdate: SwUpdate) { }
   @Input() public titulo: string;
-  @Input() public cargado: boolean;
   @Input() public version: string;
 
   ngOnInit() {
@@ -66,5 +66,33 @@ export class SearchComponent implements OnInit {
     // cargamos la acción del lanzamiento, el efecto escucha dicha acción, y éste es el que llama al api para cargar la información.
     this.store.dispatch(new CargarLanzamientos([this.criterioActual, SubcriterioSel]));
 
+  }
+
+  onClick() {
+    this.checkForUpdate();
+  }
+
+  checkForUpdate() {
+    console.log('[App] checkForUpdate started');
+    this.swUpdate.checkForUpdate()
+      .then(() => {
+        console.log('[App] checkForUpdate completed');
+        this.activateUpdate();
+      })
+      .catch(err => {
+        console.error(err);
+    });
+  }
+
+  activateUpdate() {
+    console.log('[App] activateUpdate started');
+    this.swUpdate.activateUpdate()
+      .then(() => {
+        console.log('[App] activateUpdate completed');
+          window.location.reload();
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 }

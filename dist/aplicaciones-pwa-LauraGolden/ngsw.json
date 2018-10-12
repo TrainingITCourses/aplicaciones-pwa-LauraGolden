@@ -9,10 +9,10 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.b13800fc92ffb73da98a.js",
+        "/main.594ae2477cff0340b65b.js",
         "/polyfills.f6ae3e8b63939c618130.js",
         "/runtime.ec2944dd8b20ec099bf3.js",
-        "/styles.ab6379ae82a5e6583d96.css"
+        "/styles.68a428dfc4fcfcdc3066.css"
       ],
       "patterns": []
     },
@@ -43,7 +43,6 @@
       "name": "cache-first",
       "patterns": [
         "http:\\/\\/127\\.0\\.0\\.1:8080\\/assets\\/launchagencies\\.json",
-        "http:\\/\\/127\\.0\\.0\\.1:8080\\/assets\\/launchlibrary\\.json",
         "http:\\/\\/127\\.0\\.0\\.1:8080\\/assets\\/launchmissions\\.json",
         "http:\\/\\/127\\.0\\.0\\.1:8080\\/assets\\/launchstatus\\.json"
       ],
@@ -53,18 +52,10 @@
       "version": 1
     },
     {
-      "name": "cache-first",
+      "name": "api-first",
       "patterns": [
         "http:\\/\\/127\\.0\\.0\\.1:8080\\/assets\\/launchlibrary\\.json"
       ],
-      "strategy": "performance",
-      "maxSize": 2000,
-      "maxAge": 86400000,
-      "version": 1
-    },
-    {
-      "name": "api-first",
-      "patterns": [],
       "strategy": "freshness",
       "maxSize": 10,
       "maxAge": 86400000,
@@ -84,11 +75,11 @@
     "/assets/images/lan_01.jpg": "f643950563d095ff0675670568927d8e5e4ab6e7",
     "/assets/images/lan_02.jpg": "bdf64782a10080b4d9dcc915a58e40441797759a",
     "/favicon.ico": "a923915cece9dcdd436ab93fdec665b4efe976d2",
-    "/index.html": "6a137d3f21af1038edb5c9d2fae705b6f1fca846",
-    "/main.b13800fc92ffb73da98a.js": "7cc3b0b5a9b145e40407256d35c839ad5c7a5bbe",
+    "/index.html": "fd66b84125e0ba06a322ba47a7ff18d4036d00be",
+    "/main.594ae2477cff0340b65b.js": "2491b90d47472aea53d45c2b0c774fae3a8b36b6",
     "/polyfills.f6ae3e8b63939c618130.js": "ef2035f0504b4f77eac510c33595c81a5d09e33f",
     "/runtime.ec2944dd8b20ec099bf3.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
-    "/styles.ab6379ae82a5e6583d96.css": "a03466073e01b9d6019691547ab62891326fbabb"
+    "/styles.68a428dfc4fcfcdc3066.css": "aa4bbba9208e1750bb39f6fd148163e61347f951"
   },
   "navigationUrls": [
     {
